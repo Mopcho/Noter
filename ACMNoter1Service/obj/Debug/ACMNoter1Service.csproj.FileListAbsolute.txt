@@ -1,0 +1,10 @@
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\bin\Debug\ACMNoter1Service.exe.config
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\bin\Debug\ACMNoter1Service.exe
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\bin\Debug\ACMNoter1Service.pdb
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\obj\Debug\ACMNoter1Service.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\obj\Debug\ACMNoter1Service.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\obj\Debug\ACMNoter1Service.exe
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\obj\Debug\ACMNoter1Service.pdb
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\bin\Debug\ACMNoter1.dll
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\bin\Debug\ACMNoter1.pdb
+C:\Users\PC\Desktop\ACMNoter\ACMNoter\ACMNoter1Service\obj\Debug\ACMNoter1Service.csproj.CopyComplete
