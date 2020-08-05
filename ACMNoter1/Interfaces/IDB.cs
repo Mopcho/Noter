@@ -9,8 +9,7 @@ namespace ACMNoter1.Interfaces
     public interface IDB
     {
         void Save(IContent content,string directory);
-        string Get(DateTime time,string directory);
-        string Get(string directory);
+        string Get(string year,string month,string day,string directory);
         void Clear(string directory);
     }
 }

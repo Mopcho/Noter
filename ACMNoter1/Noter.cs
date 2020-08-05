@@ -9,65 +9,142 @@ namespace ACMNoter1
 {
     public class Noter
     {
+        //-----------------Fields-----------------//
         private IDB db;
+
         private ILoger loger;
-        private string directory;
 
-        public IDB DB { get; set; }
+        private string folder;
 
-        public ILoger Loger { get; set; }
 
-        public string Directory { get; set; }
-
-        public Noter(IDB dB, ILoger loger, string directory)
+        //-----------------Properties-----------------//
+        public IDB DB
         {
-            if(db==null || loger == null || directory==null)
+            get
             {
-                throw new ArgumentNullException();
+                return this.db;
             }
+            set
+            {
+                this.db = value;
+            }
+        }
+
+        public ILoger Loger
+        {
+            get
+            {
+                return this.loger;
+            }
+            set
+            {
+                this.loger = value;
+            }
+        }
+
+        public string Folder
+        {
+            get
+            {
+                return this.folder;
+            }
+            set
+            {
+                this.folder = value;
+            }
+        }
+
+
+        //-----------------Constructors-----------------//
+        public Noter(IDB dB, ILoger loger, string folder)
+        {
             this.DB = dB;
             this.Loger = loger;
-            this.Directory = directory;
+            this.Folder = folder;
         }
 
+
+        //-----------------Methods-----------------//
+        //Saves IContent to the database specified in the constructor
         public void Save(IContent activity)
         {
-            this.DB.Save(activity, this.Directory);
-            this.Loger.Log($"Saved to {this.Directory}");
+            this.DB.Save(activity, this.Folder);
+            Loger.LogLine($"Saved to {this.Folder}");
         }
 
-        public void ViewToday()
+        //View the content of a file from the given date in the database folder
+        public void View(string year,string month,string day)
         {
-           string msg = this.DB.Get(DateTime.Today, this.Directory);
-           this.Loger.Log(msg);
+            Loger.LogLineBase(this.DB.Get(year, month, day, this.Folder));
         }
 
-        public void ViewAll()
+        //Starts the program
+        public void Start()
         {
-            string msg = this.DB.Get(this.Directory);
-            this.Loger.Log(msg);
+            while (true)
+            {
+                Loger.LogLine("Press `P` to add more activities or `V` to view activities on a specific date or `exit` to exit the program");
+                string answer = Loger.LogReadLine();
+                if (answer == "exit")
+                {
+                    return;
+                }
+                if(answer=="V")
+                {
+                    VSection(answer);
+                }
+                if(answer=="P")
+                {
+                    PSection(answer);
+                }
+            }
         }
-
-        public void ViewYesterday()
-        {
-            DateTime dt = DateTime.Today;
-            dt = dt.AddDays(-1);
-            string msg = this.DB.Get(dt, this.Directory);
-            this.Loger.Log(msg);
-        }
-
-        public void DeleteAll()
-        {
-            this.DB.Clear(this.Directory);
-            this.Loger.Log("Database cleared");
-        }
-
-       //public void ViewMonth()
-       //{
-       //    string msg = this.DB.Get(DateTime.Today, this.Directory);
-       //    this.Loger.Log(msg);
-       //}
         
-        //viewYear();
+
+        //-----------------Private Methods-----------------//
+        private void VSection(string answer)
+        {
+            while (answer == "V")
+            {
+                Loger.Log("Year :");
+                string yearV = Loger.LogReadLine();
+                Loger.Log("Month :");
+                string monthV = Loger.LogReadLine();
+                Loger.Log("Day :");
+                string dayV = Loger.LogReadLine();
+                Loger.LogClear();
+
+                this.View(yearV, monthV, dayV);
+
+                Loger.LogLine("Press `P` to add more activities or `V` to view activities on a specific date or `exit` to exit the program");
+                answer = Loger.LogReadLine();
+                if (answer == "exit")
+                {
+                    return;
+                }
+            }
+        }
+
+        private void PSection(string answer)
+        {
+            Loger.Log("Description :");
+            string description = Loger.LogReadLine();
+            Loger.Log("Is it good or bad :");
+            string isItGood = Loger.LogReadLine();
+            Loger.Log("Year :");
+            string year = Loger.LogReadLine();
+            Loger.Log("Month :");
+            string month = Loger.LogReadLine();
+            Loger.Log("Day :");
+            string day = Loger.LogReadLine();
+            Loger.Log("Hour :");
+            string hour = Loger.LogReadLine();
+            Loger.Log("Minute :");
+            string minute = Loger.LogReadLine();
+
+            Activity activity = new Activity(description, isItGood, year, month, day, hour, minute);
+            Loger.LogClear();
+            this.Save(activity);
+        }
     }
 }

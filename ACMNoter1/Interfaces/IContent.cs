@@ -9,7 +9,11 @@ namespace ACMNoter1.Interfaces
     public interface IContent
     {
         string Description { get; set; }
-        bool IsGood { get; set; }
-        DateTime DT { get; set; }
+        string IsGood { get; set; }
+        string Year { get; set; }
+        string Month { get; set; }
+        string Day { get; set; }
+        string Hour { get; set; }
+        string Minute { get; set; }
     }
 }

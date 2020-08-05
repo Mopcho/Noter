@@ -13,6 +13,7 @@ namespace ACMNoter1Test
         [TestMethod]
         public void NoterConstructor_ShouldReturnNullArgumentException()
         {
+            
         }
     }
 }

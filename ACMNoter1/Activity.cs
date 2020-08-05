@@ -10,13 +10,21 @@ namespace ACMNoter1
     public class Activity : IContent
     {
         public string Description { get; set; }
-        public bool IsGood {get;set;}
-        public DateTime DT { get; set; }
-        public Activity(string description,bool isGood,DateTime dt)
+        public string IsGood {get;set;}
+        public string Year { get; set; }
+        public string Month { get; set; }
+        public string Day { get; set; }
+        public string Hour { get; set; }
+        public string Minute { get; set; }
+        public Activity(string description,string isGood,string year,string month,string day,string hour,string minute)
         {
             this.Description = description;
             this.IsGood = isGood;
-            this.DT = dt;
+            this.Year = year;
+            this.Month = month;
+            this.Day = day;
+            this.Hour = hour;
+            this.Minute = minute;
         }
     }
 }

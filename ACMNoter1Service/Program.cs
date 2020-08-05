@@ -14,12 +14,8 @@ namespace ACMNoter1Service
         {
             var loger = new ConsoleLoger();
             var db = new NotePadDB();
-            var activity = new Activity("aaaaaaaaaaaaaaa",true,new DateTime(2020,8,3));
-            var activity2 = new Activity("bbbbbbbbbbbbbb", true, DateTime.Today);
-            var noter = new Noter(db,loger,"C:/Users/PC/Desktop/DataBase/db.txt");
-            noter.Save(activity);
-            noter.Save(activity2);
-            noter.ViewYesterday();
+            var noter = new Noter(db,loger,"C:/Users/PC/Desktop/DataBase/");
+            noter.Start();
         }
     }
 }

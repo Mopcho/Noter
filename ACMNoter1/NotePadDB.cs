@@ -10,34 +10,22 @@ namespace ACMNoter1
 {
     public class NotePadDB : IDB
     {
+
         public void Save(IContent activity, string directory)
         {
-            StringBuilder str = new StringBuilder();
-            str.AppendLine($"{activity.DT.ToString()} - {activity.Description} - {activity.IsGood}");
-            File.AppendAllText(directory, str.ToString());
+            directory += String.Format($"{activity.Year}-{activity.Month}-{activity.Day}.txt");
+            File.AppendAllText(directory, String.Format($"{activity.Hour}:{activity.Minute} - {activity.Description} - {activity.IsGood}\r\n"));
         }
 
-        public string Get(DateTime time, string directory)
-        { 
-            string holder = File.ReadAllText(directory);
-
-            string[] arrHolder = holder.Split('\r');
-
-            string[] dated = arrHolder
-                .Where(x => x.Contains(time.ToString())).ToArray();
-
-            return string.Join("\r\n", dated);
-        }
-
-        public string Get(string directory)
+        public string Get(string year,string month,string day, string directory)
         {
-            string holder = File.ReadAllText(directory);
-            return holder;
+            directory += String.Format($"{year}-{month}-{day}.txt");
+            return File.ReadAllText(directory);
         }
 
         public void Clear(string directory)
         {
-            File.WriteAllText(directory, string.Empty);
+            
         }
     }
 }
